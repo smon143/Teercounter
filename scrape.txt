@@ -1,0 +1,43 @@
+def task():
+    # Collect and parse first page
+    page = requests.get('http://teertoday.com')
+    soup = BeautifulSoup(page.text, 'html.parser')
+    table_body = soup.find('table')
+    #print(table_body)
+    rows = table_body.find_all('tr')
+    #print(rows)
+    rows = table_body.find_all('tr')
+    for row in rows:
+        cols = row.find_all('td')
+    #print(row)
+    cols = [row.text.strip() for row in cols]
+    fr = cols[0]
+    sr = cols[1]
+
+
+
+
+
+
+
+
+
+
+    # Collect and parse first page
+    final = []
+    page = requests.get('view-source:https://www.teerresults.com/')
+    soup = BeautifulSoup(page.text, 'html.parser')
+    h = soup.find('h2')
+    table_body = soup.find('table')
+    table_list = soup.findAll('td')
+    for date in table_list:
+        cal = date.text.strip()
+        final.append(cal)
+    h2 = h.text.strip()
+    dateup = h2
+    t1 = final[0]
+    t2 = final[1]
+    fr = final[2]
+    sr = final[3]
+
+task()
